@@ -2,10 +2,35 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>تحدي الفرق</title>
+<title>لعبة التحدي</title>
 
 <link rel="stylesheet" href="style.css">
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<!-- 🔥 Firebase -->
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBR96UoLuF7FRnNbZwMJDNBpBjOFiDb7dU",
+  authDomain: "quiz-game-b8a2b.firebaseapp.com",
+  projectId: "quiz-game-b8a2b",
+  storageBucket: "quiz-game-b8a2b.firebasestorage.app",
+  messagingSenderId: "798634430060",
+  appId: "1:798634430060:web:73bf383f6da8592f4a1249"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.db = db;
+window.getDocs = getDocs;
+window.collection = collection;
+
+</script>
 
 </head>
 
@@ -16,58 +41,37 @@
   <h2>🎮 إعداد الفرق</h2>
 
   <input id="team1" placeholder="اسم الفريق الأول">
-  <select id="logo1">
-    <option>🦁</option>
-    <option>🐯</option>
-    <option>⚽</option>
-    <option>🔥</option>
-  </select>
-
   <input id="team2" placeholder="اسم الفريق الثاني">
-  <select id="logo2">
-    <option>🦅</option>
-    <option>🐺</option>
-    <option>🏀</option>
-    <option>⚡</option>
-  </select>
 
-  <br><br>
   <button onclick="startGame()">ابدأ اللعبة</button>
 </div>
 
-<!-- لوحة الفئات -->
+<!-- لوحة -->
 <div id="board" class="screen board"></div>
 
-<!-- شاشة اللعب -->
+<!-- اللعب -->
 <div id="play" class="screen">
+  <div id="turn"></div>
 
-  <div class="topbar">
-    <div id="turn"></div>
-    <div class="timer">
-      ⏱️ <span id="time">0</span>
-      <button onclick="toggleTimer()">⏸️</button>
-      <button onclick="resetTimer()">🔄</button>
-    </div>
-  </div>
+  ⏱️ <span id="time">0</span>
+  <button onclick="toggleTimer()">⏸</button>
+  <button onclick="resetTimer()">🔄</button>
 
   <h2 id="question"></h2>
-
   <div id="qrcode"></div>
 
-  <button onclick="showAnswer()">👁️ إظهار الإجابة</button>
-
+  <button onclick="showAnswer()">إظهار الإجابة</button>
 </div>
 
-<!-- شاشة الإجابة -->
+<!-- الإجابة -->
 <div id="answer" class="screen">
   <h2 id="answerText"></h2>
 
   <button onclick="givePoint(0)">لا أحد</button>
-  <button onclick="givePoint(1)" id="team1Btn"></button>
-  <button onclick="givePoint(2)" id="team2Btn"></button>
+  <button onclick="givePoint(1)">الفريق 1</button>
+  <button onclick="givePoint(2)">الفريق 2</button>
 </div>
 
-<script src="data.js"></script>
 <script src="app.js"></script>
 
 </body>
