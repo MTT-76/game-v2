@@ -2,72 +2,39 @@
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
-<title>Quiz Pro</title>
+<title>تحدي الفرق</title>
 <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="container">
-
-<!-- HEADER -->
-<div class="header">
-  <h1>🎮 Quiz Game Pro</h1>
-</div>
-
-<!-- SETUP -->
-<div id="setup" class="card-box active">
-  <h2>إعداد الفرق</h2>
+<div id="start" class="screen active">
+  <h1>🔥 تحدي الفرق</h1>
   <input id="team1" placeholder="الفريق الأول">
   <input id="team2" placeholder="الفريق الثاني">
-  <button onclick="startGame()">🚀 بدء اللعبة</button>
+  <button onclick="startGame()">ابدأ اللعبة</button>
 </div>
 
-<!-- BOARD -->
-<div id="boardScreen" class="card-box">
+<div id="boardScreen" class="screen">
   <div class="topbar">
-    <div id="turn"></div>
-    <div id="score"></div>
+    <div id="team1Btn"></div>
+    <div id="team2Btn"></div>
   </div>
-
   <div id="board" class="board"></div>
 </div>
 
-<!-- PLAY -->
-<div id="play" class="card-box">
-  <h2 id="question"></h2>
-
-  <div class="timer">
-    ⏱ <span id="time">0</span>
-  </div>
-
-  <div class="controls">
-    <button onclick="toggleTimer()">⏸️</button>
-    <button onclick="resetTimer()">🔄</button>
-    <button onclick="showAnswer()">👁</button>
-  </div>
+<div id="play" class="screen">
+  <h2 id="turn"></h2>
+  <h1 id="question"></h1>
+  <div class="timer" id="time">0</div>
+  <button onclick="showAnswer()">إظهار الإجابة</button>
 </div>
 
-<!-- ANSWER -->
-<div id="answer" class="card-box">
-  <h2>الإجابة</h2>
-  <p id="answerText"></p>
-
-  <div class="controls">
-    <button onclick="givePoint(1)">✔️ فريق 1</button>
-    <button onclick="givePoint(2)">✔️ فريق 2</button>
-  </div>
+<div id="answer" class="screen">
+  <h1 id="answerText"></h1>
+  <button onclick="givePoint(1)">✔ فريق 1</button>
+  <button onclick="givePoint(2)">✔ فريق 2</button>
 </div>
 
-<!-- WINNER -->
-<div id="winner" class="card-box">
-  <h2 id="winnerText"></h2>
-  <button onclick="restartGame()">🔄 لعبة جديدة</button>
-</div>
-
-</div>
-
-<script src="data.js"></script>
-<script src="app.js"></script>
+<script type="module" src="app.js"></script>
 </body>
 </html>
