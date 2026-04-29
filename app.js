@@ -2,6 +2,8 @@ let team1="", team2="";
 let scores=[0,0];
 let turn=0;
 
+let usedQuestions={};
+
 let currentQuestion=null;
 let currentPoints=0;
 
@@ -9,16 +11,14 @@ let time=0;
 let running=true;
 let interval;
 
-let usedQuestions={};
-
 function show(id){
-  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+  document.querySelectorAll(".card-box").forEach(s=>s.classList.remove("active"));
   document.getElementById(id).classList.add("active");
 }
 
 function startGame(){
-  team1=document.getElementById("team1").value || "فريق 1";
-  team2=document.getElementById("team2").value || "فريق 2";
+  team1 = document.getElementById("team1").value || "فريق 1";
+  team2 = document.getElementById("team2").value || "فريق 2";
 
   loadGame();
 
@@ -38,7 +38,7 @@ function renderBoard(){
     ["easy","medium","hard"].forEach(level=>{
       let points = level==="easy"?200:level==="medium"?400:600;
 
-      html+=`<div class="card" onclick="openQ(${ci},'${level}', this)">
+      html+=`<div class="card" onclick="openQ(${ci},'${level}',this)">
       ${points}
       </div>`;
     });
@@ -48,7 +48,6 @@ function renderBoard(){
 }
 
 function openQ(ci,level,el){
-
   if(el.classList.contains("used")) return;
 
   el.classList.add("used");
@@ -61,7 +60,7 @@ function openQ(ci,level,el){
   let available = list.filter((q,i)=>!usedQuestions[ci][level].includes(i));
 
   if(available.length===0){
-    alert("خلصت الأسئلة!");
+    alert("انتهت الأسئلة");
     return;
   }
 
@@ -120,6 +119,8 @@ function givePoint(team){
   saveGame();
   updateScore();
 
+  checkWinner();
+
   nextTurn();
   renderBoard();
   show("boardScreen");
@@ -137,6 +138,27 @@ function updateTurn(){
 function updateScore(){
   document.getElementById("score").innerText =
     team1 + ": " + scores[0] + " | " + team2 + ": " + scores[1];
+}
+
+function checkWinner(){
+  if(scores[0] >= 2000){
+    showWinner(team1);
+  }
+  if(scores[1] >= 2000){
+    showWinner(team2);
+  }
+}
+
+function showWinner(name){
+  document.getElementById("winnerText").innerText = "🏆 الفائز: " + name;
+  show("winner");
+}
+
+function restartGame(){
+  scores=[0,0];
+  usedQuestions={};
+  localStorage.clear();
+  show("setup");
 }
 
 function saveGame(){
