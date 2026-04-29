@@ -1,39 +1,10 @@
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-<meta charset="UTF-8">
-<title>تحدي الفرق</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<div id="start" class="screen active">
-  <h1 class="title">🔥 تحدي الفرق</h1>
-  <button onclick="goSetup()">ابدأ</button>
-</div>
-
-<div id="setup" class="screen">
-  <input id="team1" placeholder="الفريق الأول">
-  <input id="team2" placeholder="الفريق الثاني">
-  <div id="categories"></div>
-  <button onclick="startGame()">ابدأ التحدي</button>
-</div>
-
-<div id="boardScreen" class="screen">
-  <div id="board"></div>
-</div>
-
 <div id="play" class="screen">
+  <h2 id="turn"></h2>
   <h1 id="question"></h1>
+
+  <div class="timer">
+    <span id="time">0</span>
+  </div>
+
   <button onclick="showAnswer()">إظهار الإجابة</button>
 </div>
-
-<div id="answer" class="screen">
-  <h1 id="answerText"></h1>
-  <button onclick="givePoint(1)">✔ الأول</button>
-  <button onclick="givePoint(2)">✔ الثاني</button>
-</div>
-
-<script type="module" src="app.js"></script>
-</body>
-</html>
