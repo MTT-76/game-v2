@@ -5,30 +5,66 @@
 <title>تحدي الفرق</title>
 
 <link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
 </head>
 
 <body>
 
-<div id="board" class="screen active board"></div>
+<!-- إعداد الفرق -->
+<div id="setup" class="screen active">
+  <h2>🎮 إعداد الفرق</h2>
 
+  <input id="team1" placeholder="اسم الفريق الأول">
+  <select id="logo1">
+    <option>🦁</option>
+    <option>🐯</option>
+    <option>⚽</option>
+    <option>🔥</option>
+  </select>
+
+  <input id="team2" placeholder="اسم الفريق الثاني">
+  <select id="logo2">
+    <option>🦅</option>
+    <option>🐺</option>
+    <option>🏀</option>
+    <option>⚡</option>
+  </select>
+
+  <br><br>
+  <button onclick="startGame()">ابدأ اللعبة</button>
+</div>
+
+<!-- لوحة الفئات -->
+<div id="board" class="screen board"></div>
+
+<!-- شاشة اللعب -->
 <div id="play" class="screen">
+
   <div class="topbar">
-    <div>⏱️ <span id="time">0</span></div>
-    <button onclick="toggleTimer()">⏸️</button>
-    <button onclick="resetTimer()">🔄</button>
+    <div id="turn"></div>
+    <div class="timer">
+      ⏱️ <span id="time">0</span>
+      <button onclick="toggleTimer()">⏸️</button>
+      <button onclick="resetTimer()">🔄</button>
+    </div>
   </div>
 
   <h2 id="question"></h2>
 
-  <button onclick="showAnswer()">إظهار الإجابة</button>
+  <div id="qrcode"></div>
+
+  <button onclick="showAnswer()">👁️ إظهار الإجابة</button>
+
 </div>
 
+<!-- شاشة الإجابة -->
 <div id="answer" class="screen">
   <h2 id="answerText"></h2>
 
   <button onclick="givePoint(0)">لا أحد</button>
-  <button onclick="givePoint(1)">فريق 1</button>
-  <button onclick="givePoint(2)">فريق 2</button>
+  <button onclick="givePoint(1)" id="team1Btn"></button>
+  <button onclick="givePoint(2)" id="team2Btn"></button>
 </div>
 
 <script src="data.js"></script>
