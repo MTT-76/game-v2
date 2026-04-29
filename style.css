@@ -3,28 +3,11 @@ body{
   font-family:Cairo;
   background:#0f172a;
   color:#fff;
+  text-align:center;
 }
 
 .screen{display:none;padding:20px}
 .active{display:block}
-
-h1,h2{text-align:center}
-
-button{
-  padding:10px;
-  margin:5px;
-  border:none;
-  border-radius:10px;
-  cursor:pointer;
-  background:#6366f1;
-  color:white;
-}
-
-.topbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
 
 .board{
   display:grid;
@@ -35,7 +18,6 @@ button{
 .card{
   background:#1e293b;
   padding:20px;
-  text-align:center;
   border-radius:12px;
   cursor:pointer;
   font-size:18px;
@@ -45,19 +27,25 @@ button{
   background:#334155;
 }
 
+button{
+  padding:10px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  background:#6366f1;
+  color:white;
+}
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+}
+
 .timer{
   font-size:18px;
 }
 
 img{
-  display:block;
-  margin:auto;
-  max-width:250px;
-}
-
-canvas{
-  display:block;
-  margin:auto;
-  background:white;
-  border-radius:10px;
+  max-width:120px;
+  margin:5px;
 }
