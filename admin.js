@@ -1,18 +1,12 @@
 import { db } from "./firebase.js";
 import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-window.addQ=async function(){
- let category=document.getElementById("cat").value;
- let difficulty=document.getElementById("level").value;
- let question=document.getElementById("q").value;
- let answer=document.getElementById("a").value;
-
+window.addQ=async()=>{
  await addDoc(collection(db,"questions"),{
-   category,
-   difficulty,
-   question,
-   answer
+  category:cat.value,
+  difficulty:d.value,
+  question:q.value,
+  answer:a.value
  });
-
- alert("تمت الإضافة");
+ alert("تم");
 }
