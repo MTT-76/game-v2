@@ -1,46 +1,70 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <title>Quiz Game</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Quiz Pro</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<!-- Setup -->
-<div id="setup" class="screen active">
-  <h1>إعداد اللعبة</h1>
-  <input id="team1" placeholder="اسم الفريق الأول">
-  <input id="team2" placeholder="اسم الفريق الثاني">
-  <button onclick="startGame()">ابدأ</button>
+<div class="container">
+
+<!-- HEADER -->
+<div class="header">
+  <h1>🎮 Quiz Game Pro</h1>
 </div>
 
-<!-- Board -->
-<div id="boardScreen" class="screen">
+<!-- SETUP -->
+<div id="setup" class="card-box active">
+  <h2>إعداد الفرق</h2>
+  <input id="team1" placeholder="الفريق الأول">
+  <input id="team2" placeholder="الفريق الثاني">
+  <button onclick="startGame()">🚀 بدء اللعبة</button>
+</div>
+
+<!-- BOARD -->
+<div id="boardScreen" class="card-box">
   <div class="topbar">
     <div id="turn"></div>
     <div id="score"></div>
   </div>
+
   <div id="board" class="board"></div>
 </div>
 
-<!-- Play -->
-<div id="play" class="screen">
+<!-- PLAY -->
+<div id="play" class="card-box">
   <h2 id="question"></h2>
-  <div class="timer">⏱ <span id="time">0</span></div>
 
-  <button onclick="toggleTimer()">⏸️ إيقاف</button>
-  <button onclick="resetTimer()">🔄 إعادة</button>
-  <button onclick="showAnswer()">👁 عرض الإجابة</button>
+  <div class="timer">
+    ⏱ <span id="time">0</span>
+  </div>
+
+  <div class="controls">
+    <button onclick="toggleTimer()">⏸️</button>
+    <button onclick="resetTimer()">🔄</button>
+    <button onclick="showAnswer()">👁</button>
+  </div>
 </div>
 
-<!-- Answer -->
-<div id="answer" class="screen">
+<!-- ANSWER -->
+<div id="answer" class="card-box">
   <h2>الإجابة</h2>
   <p id="answerText"></p>
 
-  <button onclick="givePoint(1)">✔️ فريق 1</button>
-  <button onclick="givePoint(2)">✔️ فريق 2</button>
+  <div class="controls">
+    <button onclick="givePoint(1)">✔️ فريق 1</button>
+    <button onclick="givePoint(2)">✔️ فريق 2</button>
+  </div>
+</div>
+
+<!-- WINNER -->
+<div id="winner" class="card-box">
+  <h2 id="winnerText"></h2>
+  <button onclick="restartGame()">🔄 لعبة جديدة</button>
+</div>
+
 </div>
 
 <script src="data.js"></script>
