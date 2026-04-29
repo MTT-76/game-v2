@@ -7,7 +7,7 @@ const DATA = {
       questions:{
         easy:[
           {q:"عاصمة فرنسا؟",a:"باريس"},
-          {q:"أكبر قارة؟",a:"آسيا"}
+          {q:"عاصمة اليابان؟",a:"طوكيو"}
         ],
         medium:[
           {q:"عدد الدول العربية؟",a:"22"}
@@ -19,31 +19,32 @@ const DATA = {
     },
 
     {
-      name:"رياضة",
-      type:"question",
-      questions:{
-        easy:[
-          {q:"كم لاعب في كرة القدم؟",a:"11"}
-        ],
-        medium:[
-          {q:"من فاز بكأس العالم 2022؟",a:"الأرجنتين"}
-        ],
-        hard:[
-          {q:"كم عدد بطولات ريال مدريد؟",a:"14"}
-        ]
-      }
+      name:"تحدي الصور",
+      type:"images",
+      items:[
+        {
+          images:[
+            "https://via.placeholder.com/100",
+            "https://via.placeholder.com/100"
+          ],
+          answer:"سفر"
+        }
+      ]
     },
 
     {
-      name:"تمثيل",
-      type:"acting",
-      items:["طبيب","شرطي","مدرس"]
-    },
-
-    {
-      name:"رسم",
-      type:"drawing",
-      items:["سيارة","قارب","شجرة"]
+      name:"التعديد",
+      type:"multi",
+      items:[
+        {
+          question:"اذكر أشهر الرياضات",
+          answers:[
+            {text:"كرة القدم",points:200},
+            {text:"كرة السلة",points:150},
+            {text:"التنس",points:100}
+          ]
+        }
+      ]
     },
 
     {
@@ -53,7 +54,7 @@ const DATA = {
         "+200 نقطة",
         "-100 نقطة",
         "سرقة دور",
-        "أول من يضحك يفوز"
+        "تبديل النقاط"
       ]
     }
 
